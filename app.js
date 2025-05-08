@@ -5,6 +5,8 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
+const session = require("express-session");
+const flash = require("connect-flash");
 
 
 const listings = require("./routes/listing.js");
@@ -33,10 +35,36 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
 
+
+const sessionOptions = {
+    secret: "mysupersecretcode",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
+        maxAge: 7 * 24 * 60 * 60 * 1000,
+        httpOnly: true,
+    },
+};
+
+// Setup session middleware first
+app.use(session(sessionOptions));
+
+// Setup flash middleware
+app.use(flash());
+
+// Setup flash locals middleware
+app.use((req, res, next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    // console.log(res.locals.success);
+    next();
+});
+
+// Define routes after all middleware is initialized
 app.get("/", (req, res) => {
     res.send("Hi, I'm Root User");
 });
-
 
 app.use("/listings", listings);
 app.use("/listings/:id/reviews", reviews);
