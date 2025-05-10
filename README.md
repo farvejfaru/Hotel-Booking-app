@@ -1,80 +1,70 @@
-# WanderLust - Phase 1 Part C
 
-WanderLust is a travel property listing web application built with Node.js, Express.js, MongoDB, and EJS. It allows users to view, create, edit, and delete travel property listings.
+# Hotel Booking App – Phase-2 Part D
 
-
-
-## Phase 1 Part C Overview
-
-In this phase, the project structure and user interface were significantly improved. Modular view layouts were implemented, reusable partials (like navbar and footer) were added, and custom styling was introduced to enhance the visual design.
+A hotel property listing web application built using Node.js, Express.js, MongoDB, and EJS. In this phase, we continue from previous improvements and focus on enhanced layout, UI modularity, and styling.
 
 
 
-## Features Implemented in Part C
+## 🚀 Phase-2 Part D Highlights
 
-* Added `boilerplate.ejs` layout for consistent page structure
-* Introduced reusable partials: `navbar.ejs` and `footer.ejs`
-* Created a `public/css/style.css` file for custom styles
-* Integrated Bootstrap for responsive UI
-* Applied consistent card-based layout for listings
-* Enhanced readability and maintainability of views using EJS includes
-
-
-
-## Tech Stack
-
-* **Backend:** Node.js, Express.js
-* **Frontend:** EJS (Embedded JavaScript), Bootstrap, Custom CSS
-* **Database:** MongoDB (Mongoose ODM)
+- Integrated custom CSS (`style.css`) for consistent UI design
+- Implemented reusable layout template (`boilerplate.ejs`)
+- Added partials (`navbar.ejs`, `footer.ejs`) for clean and reusable HTML sections
+- Updated all listing views to use the new layout and styling
+- Server updated to serve static files using Express middleware
 
 
 
-## Installation Instructions
+## 💻 Tech Stack
 
-1. Clone the repository:
-
-   ```bash
-   git clone <repository-url>
-   ```
-
-2. Install project dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Start MongoDB server locally:
-
-   ```bash
-   mongod
-   ```
-
-4. Seed the database with initial sample data:
-
-   ```bash
-   node init/index.js
-   ```
-
-5. Start the server:
-
-   ```bash
-   node app.js
-   ```
-
-6. Open the application in a browser:
-
-   ```
-   http://localhost:8080/
-   
-   ```
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB with Mongoose
+- **Templating:** EJS
+- **Styling:** CSS, Bootstrap utility classes
 
 
 
-## Updated Project Directory Structure
+## 🛠️ Installation Instructions
+
+1. **Clone the repository**
+```bash
+git clone https://github.com/farvejfaru/Hotel-Booking-app.git
+cd Hotel-Booking-app
+```
+
+2. **Install dependencies**
+```bash
+npm install
+```
+
+3. **Start MongoDB**
+```bash
+mongod
+```
+
+4. **Seed the database**
+```bash
+node init/index.js
+```
+
+5. **Run the app**
+```bash
+node app.js
+```
+
+6. **Visit**
+```
+http://localhost:8080
+```
+
+
+
+## 📁 Folder Structure
 
 ```
-WanderLust/
+Hotel-Booking-app/
 ├── app.js
+├── index.js
 ├── init/
 │   ├── data.js
 │   └── index.js
@@ -85,41 +75,42 @@ WanderLust/
 │       └── style.css
 ├── views/
 │   ├── includes/
-│   │   ├── footer.ejs
-│   │   └── navbar.ejs
+│   │   ├── navbar.ejs
+│   │   └── footer.ejs
 │   ├── layouts/
 │   │   └── boilerplate.ejs
 │   └── listings/
-│       ├── edit.ejs
 │       ├── index.ejs
+│       ├── show.ejs
 │       ├── new.ejs
-│       └── show.ejs
+│       └── edit.ejs
+├── package.json
+└── README.md
 ```
 
 
 
-## API Routes Overview
+## 🌐 Routes
 
-| Method | Path                 | Description                |
-|  | -- | -- |
-| GET    | `/`                  | Root Route                 |
-| GET    | `/listings`          | Display all listings       |
-| GET    | `/listings/new`      | Form to add a new listing  |
-| POST   | `/listings`          | Create a new listing       |
-| GET    | `/listings/:id`      | View details of a listing  |
-| GET    | `/listings/:id/edit` | Edit an existing listing   |
-| PUT    | `/listings/:id`      | Update an existing listing |
-| DELETE | `/listings/:id`      | Delete a listing           |
-
+| Method | Path                  | Description                    |
+|--|--|--|
+| GET    | /listings             | Show all listings              |
+| GET    | /listings/new         | Form to create new listing     |
+| POST   | /listings             | Submit new listing             |
+| GET    | /listings/:id         | Show single listing details    |
+| GET    | /listings/:id/edit    | Form to edit listing           |
+| PUT    | /listings/:id         | Update listing                 |
+| DELETE | /listings/:id         | Delete listing                 |
 
 
-## Listing Model Schema
 
-```javascript
+## 📦 Listing Model Schema
+
+```js
 {
   title: String (required),
   description: String,
-  image: String (default value if not provided),
+  image: String (with default),
   price: Number,
   location: String,
   country: String
@@ -128,10 +119,21 @@ WanderLust/
 
 
 
-## UI/UX Enhancements
+## 📌 Phase-2 Part D Enhancements
 
-* Reusable EJS layout via `boilerplate.ejs`
-* Navigation and footer included on all pages
-* Centered cards, spacing, and shadow effects using custom CSS
-* Static files served from `public` directory
+- Improved design consistency
+- Reusable layouts and components
+- Easier maintenance with modular templates
+- Better frontend styling with static CSS
 
+
+
+## 📜 License
+
+This project is for educational use and open development.
+
+
+
+## 👤 Author
+
+[@farvejfaru](https://github.com/farvejfaru)
