@@ -87,6 +87,12 @@ app.use((req, res, next) => {
 });
 
 // Define routes after all middleware is initialized
+
+// Root route - redirect to listings
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
+
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
