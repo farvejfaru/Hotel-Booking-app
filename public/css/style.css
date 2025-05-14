@@ -141,12 +141,19 @@ body {
   object-fit: cover;
 }
 
+.btns-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 1rem;
+  margin: 1.5rem 0;
+}
+
 .btns {
   display: flex;
   gap: 1rem;
-  margin: 1rem 0;
-  justify-content: flex-start;
-  padding-left: 0;
+  margin: 0;
+  width: auto;
 }
 
 .show-card {
@@ -198,13 +205,23 @@ body {
     border-radius: 10px;
   }
 
-  .btns {
-    justify-content: center; /* Center for tablet/mobile view */
-    margin: 1rem 5%;
+  .btns-container {
+    justify-content: center;
+    padding: 0;
   }
-
-  .btns .btn {
+  
+  .btns {
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    padding-right: 0;
+  }
+  
+  .btns .btn,
+  .btns form,
+  .btns form .btn {
     width: auto;
+    min-width: 100px;
   }
 
   .btn.col-1.offset-3 {
@@ -280,18 +297,24 @@ body {
     width: 100%;
   }
 
+  .btns-container {
+    justify-content: center;
+    padding: 0;
+  }
+  
   .btns {
-    flex-direction: column;
-    align-items: stretch;
+    width: 90%;
+    margin: 0 auto;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.75rem;
   }
-
+  
   .btns .btn,
-  .btns form {
-    width: 100%;
-  }
-
+  .btns form,
   .btns form .btn {
-    width: 100%;
+    min-width: 120px;
   }
 
   #map {
@@ -457,3 +480,21 @@ body {
     gap: 0.5rem;
   }
 }
+
+/* Review stars centering - consolidated */
+@media screen and (max-width: 768px) {
+  .show-card .starability-result {
+    position: relative !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin: 0.5rem auto !important;
+  }
+
+  .starability-result {
+    margin: 1.5rem auto !important;
+    display: block !important;
+    float: none !important;
+  }
+
+}
+
