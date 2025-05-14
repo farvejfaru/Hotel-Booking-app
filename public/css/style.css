@@ -1,37 +1,12 @@
-/* Update root styles */
-* {
-  box-sizing: border-box !important;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  width: 100%;
-}
-
 body {
   font-family: "Plus Jakarta Sans", sans-serif !important;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  width: 100%;
-  overflow-x: hidden;
-  position: relative;
 }
 
-.container,
-.container-fluid {
-  width: 100% !important;
-  max-width: 100% !important;
-  padding: 0 15px !important; /* Changed from 0 to 0 15px */
-  margin: 0 auto !important;
-  overflow-x: hidden !important;
-}
-
-.row {
-  max-width: 100% !important;
-  margin: 0 -15px !important; /* Changed from 0 auto to 0 -15px */
-  padding: 0 !important;
+.container {
+  flex: 1;
 }
 
 .navbar {
@@ -83,141 +58,57 @@ body {
 }
 
 /* Cards */
-/* Index page layout */
 .listing-card {
-  border: 1px solid rgba(0, 0, 0, 0.08) !important;
-  margin-bottom: 2rem !important;
-  transition: all 0.3s ease !important;
-  border-radius: 1.25rem !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
-  background-color: white !important;
+  border: none !important;
+  margin-bottom: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); */
+  border-radius: 1rem;
 }
 
 .listing-card:hover {
-  transform: translateY(-5px) !important;
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1) !important;
-  border-color: rgba(0, 0, 0, 0.12) !important;
+  transform: translateY(-6px);
+  /* box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); */
+}
+
+.listing-card:hover .card-img-top {
+  transform: scale(1.02);
+  filter: brightness(1.03);
 }
 
 .card-img-top {
-  border-radius: 1.25rem 1.25rem 0 0 !important;
+  border-radius: 1rem !important;
   width: 100% !important;
   object-fit: cover !important;
-  aspect-ratio: 16/9;
+  transition: transform 0.4s ease, filter 0.4s ease;
 }
 
 .card-body {
-  padding: 1.25rem !important;
-  background-color: white !important;
-  border-radius: 0 0 1.25rem 1.25rem !important;
-}
-
-/* Index page layout fixes */
-.listings-container {
-  padding: 0 15px !important;
-}
-
-.listings-container .row {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -15px !important;
-}
-
-.listings-container .col-lg-4 {
-  padding: 0 15px !important;
-}
-
-/* Desktop view */
-@media screen and (min-width: 768px) {
-  .listings-container .col-lg-4 {
-    width: 33.33% !important;
-  }
-}
-
-/* Mobile view */
-@media screen and (max-width: 768px) {
-  /* Index page fixes */
-  .listings-container {
-    padding: 10px !important;
-  }
-
-  .listings-container .row {
-    margin: 0 !important;
-    display: flex;
-    justify-content: center !important;
-  }
-
-  .listings-container .col-lg-4 {
-    width: 92% !important;
-    margin: 0 auto 1.5rem auto !important;
-    padding: 0 !important;
-  }
-
-  /* Show page button fixes */
-  .btns {
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 0.75rem !important;
-    width: 92% !important;
-    margin: 1rem auto !important;
-  }
-
-  .btns .btn,
-  .btns form,
-  .btns form .btn {
-    width: 100% !important;
-    margin: 0 !important;
-  }
-
-  /* Review card fixes */
-  .card.col-5,
-  .row .card.col-5 {
-    width: 92% !important;
-    margin: 0.75rem auto !important;
-    padding: 1rem !important;
-  }
-
-  .card-body {
-    text-align: center !important;
-  }
-
-  .card-title {
-    text-align: center !important;
-    margin-bottom: 1rem !important;
-  }
-
-  .starability-result {
-    margin: 1rem auto !important;
-    display: block !important;
-  }
-
-  .card-text {
-    text-align: center !important;
-    margin-bottom: 1rem !important;
-  }
-
-  /* Review form fixes */
-  .needs-validation {
-    width: 92% !important;
-    margin: 0 auto !important;
-    padding: 1rem !important;
-  }
-
-  /* Show page container fixes */
-  .col-8.offset-3,
-  .col-6.offset-3,
-  .card.col-6.offset-3 {
-    width: 92% !important;
-    margin: 0 auto !important;
-    padding: 0 !important;
-  }
+  padding: 0 !important;
 }
 
 .card-text p {
   font-weight: 400 !important;
 }
 
+/* Show card styling improvements */
+.show-card.listing-card .card-body {
+  padding: 1rem 0 !important;
+}
+
+.show-card.listing-card .card-text {
+  margin-bottom: 0.75rem;
+}
+
 .listing-link {
+  text-decoration: none;
+  display: block;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.listing-link:hover {
   text-decoration: none;
 }
 
@@ -245,44 +136,33 @@ body {
 
 /* Show Page */
 .show-img {
-  height: max(50vh, 250px);
+  height: 30vh;
   width: 100%;
   object-fit: cover;
-  object-position: center;
-  border-radius: 1rem 1rem 1rem 1rem !important;
-  overflow: hidden;
-  display: block;
-  margin-top: 1rem;
-  position: relative;
 }
 
 .btns {
   display: flex;
   gap: 1rem;
   margin: 1rem 0;
+  justify-content: flex-start;
+  padding-left: 0;
 }
 
 .show-card {
-  padding: 0;
-  margin: 0 auto;
-  width: 100%;
-  overflow: hidden;
-  border-radius: 1.25rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* Map */
+
 #map {
   height: 400px;
   width: 80vh;
   max-width: 100%;
-  border: 3px solid #dee2e6;
-  border-radius: 1rem;
+  border-radius: 12px;
+  overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 1.5rem;
 }
 
 /* Responsive Styles */
@@ -293,74 +173,135 @@ body {
     width: 70% !important;
     margin-left: 15% !important;
   }
+}
 
-  .show-card {
-    border-radius: 1.25rem !important;
-    overflow: hidden !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+@media screen and (max-width: 768px) {
+  .col-8.offset-3,
+  .col-6.offset-3,
+  .card.col-6.offset-3 {
+    width: 90% !important;
+    margin-left: 5% !important;
   }
 
-  .show-img {
-    border-radius: 1.25rem 1.25rem 0 0 !important;
-    height: max(25vh, 280px) !important;
-    object-position: center !important;
+  /* Improve show card text alignment for tablet */
+  .show-card.listing-card {
+    margin-bottom: 1.5rem;
+  }
+
+  .show-card.listing-card .card-body {
+    padding: 1rem 1.5rem !important;
+  }
+
+  #map {
+    width: 100%;
+    height: 350px;
+    border-radius: 10px;
+  }
+
+  .btns {
+    justify-content: center; /* Center for tablet/mobile view */
+    margin: 1rem 5%;
+  }
+
+  .btns .btn {
+    width: auto;
+  }
+
+  .btn.col-1.offset-3 {
+    width: auto !important;
+    margin-left: 0 !important;
+  }
+
+  .btns form {
+    margin: 0;
+  }
+
+  .btns form .btn {
+    margin-left: 0;
+  }
+
+  /* Review cards in mobile */
+  .card.col-5 {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Adjust hover effects for mobile */
+  .listing-card:hover {
+    transform: translateY(-4px);
+  }
+}
+
+/* Additional responsive improvements */
+@media screen and (max-width: 768px) {
+  /* Improve title spacing */
+  .row.mt-3 h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Improve spacing between review cards */
+  .row .card.col-5 {
+    margin-bottom: 1rem !important;
+  }
+
+  /* Better spacing for review form */
+  .col-8.offset-3.mb-3 {
+    padding: 0 1rem;
+  }
+
+  /* Improve map title alignment */
+  .col-6.offset-3.mb-3 h3 {
+    text-align: center;
+    margin-bottom: 1rem;
   }
 }
 
 @media screen and (max-width: 576px) {
-  /* Update/add these rules */
-  /* Image and card adjustments */
   .show-img {
-    height: 20vh !important;
-  }
-
-  .show-card {
-    width: 92% !important;
-    margin: 0 4% !important;
-    padding: 0 !important;
+    height: 25vh;
   }
 
   .card-body {
-    padding: 0.5rem !important;
+    padding: 1rem !important;
   }
 
-  /* Button adjustments */
+  /* Center text in show page card for mobile */
+  .listing-card .card-body {
+    align-items: center !important;
+    text-align: center !important;
+    padding: 1.25rem !important;
+  }
+
+  .listing-card .card-text {
+    text-align: start !important;
+    margin: 0.5rem auto !important;
+    width: 100%;
+  }
+
   .btns {
     flex-direction: column;
     align-items: stretch;
-    width: 92% !important;
-    margin: 1rem 4% !important;
-    padding: 0 !important;
   }
 
   .btns .btn,
-  .btns form,
+  .btns form {
+    width: 100%;
+  }
+
   .btns form .btn {
     width: 100%;
   }
 
-  /* Map size */
   #map {
     height: 300px;
+    border-radius: 8px;
   }
 
-  /* Review form and cards */
-  .needs-validation {
-    padding: 0.5rem !important;
-    width: 100% !important;
-  }
-
-  /* Review section and map container adjustments */
-  .col-8.offset-3.mb-3,
-  .col-6.offset-3.mb-3 {
-    width: 90% !important;
-    margin: 0 5% !important;
-    padding: 0 !important;
-  }
-
-  .card-text {
-    font-size: 0.95rem;
-    margin-bottom: 0.75rem;
+  /* Adjust review form and comments */
+  .card.col-5 {
+    padding: 0.5rem;
   }
 
   .starability-slot {
@@ -368,14 +309,25 @@ body {
     padding: 0.5rem 0;
   }
 
-  .card-title {
-    margin-bottom: 1.5rem !important;
+  /* Adjust review form */
+  .needs-validation {
+    padding: 0.5rem;
   }
 
-  .starability-result {
-    margin: 1.5rem auto !important;
-    display: block !important;
-    float: none !important;
+  /* Improve spacing and readability */
+  .card-text {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
+  /* Improve spacing between reviews */
+  .card.col-5.ms-3.mb-3 {
+    margin: 0.5rem 0 !important;
+  }
+
+  /* Center align all review card content */
+  .card-body {
+    text-align: center;
   }
 }
 
@@ -440,4 +392,68 @@ body {
   font-size: 1rem;
   margin-top: 1rem;
   font-weight: bolder;
+}
+
+/* Review Card Styling */
+.card.col-5.ms-3.mb-3 {
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  overflow: hidden;
+  margin-bottom: 1.5rem !important;
+}
+
+.card.col-5.ms-3.mb-3:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.card.col-5.ms-3.mb-3 .card-body {
+  padding: 1.25rem !important;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card.col-5.ms-3.mb-3 .card-title {
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.card.col-5.ms-3.mb-3 .starability-result {
+  margin: 0.5rem 0;
+}
+
+.card.col-5.ms-3.mb-3 .card-text {
+  margin-bottom: 1rem;
+}
+
+.card.col-5.ms-3.mb-3 form {
+  margin-top: auto;
+}
+
+/* Responsive adjustments for review cards */
+@media (max-width: 768px) {
+  .card.col-5.ms-3.mb-3 {
+    width: 45% !important;
+    margin: 0.5rem !important;
+    border-radius: 10px;
+  }
+
+  .card.col-5.ms-3.mb-3 .card-body {
+    padding: 1rem !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .card.col-5.ms-3.mb-3 {
+    width: 100% !important;
+    margin: 0.75rem 0 !important;
+    border-radius: 8px;
+  }
+
+  .card.col-5.ms-3.mb-3 .card-body {
+    gap: 0.5rem;
+  }
 }
