@@ -83,8 +83,6 @@ app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currUser = req.user;
-  console.log('Flash Messages - Success:', res.locals.success);
-  console.log('Flash Messages - Error:', res.locals.error);
   next();
 });
 
