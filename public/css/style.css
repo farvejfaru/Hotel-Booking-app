@@ -116,3 +116,31 @@ body {
   padding-left: 0%;
   padding-right: 0%;
 }
+
+/* Map */
+
+#map {
+  height: 400px;
+  width: 80vh;
+}
+
+.blend-bg {
+  width: 65px;
+  height: 65px;
+  background-image: url("/images/logo.png"),
+    linear-gradient(to bottom right, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.5));
+  background-blend-mode: screen; /* or overlay, screen, lighten, etc. */
+  background-size: cover;
+  background-position: center;
+  /* color: white; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.nav-link {
+  font-weight: bold;
+}
+
+

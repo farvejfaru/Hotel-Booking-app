@@ -24,7 +24,7 @@ Wanderlust is a full-featured web application for travel accommodation listings,
 - **Database**: MongoDB with Mongoose ODM (v8.13.3)
 - **View Engine**: EJS (v3.1.10) with EJS-Mate (v4.0.0) layouts
 - **Authentication**: Passport.js with Local Strategy
-- **Form Validation**: Joi (v17.13.3) 
+- **Form Validation**: Joi (v17.13.3)
 - **Session Management**: Express-session (v1.18.1) with Connect-Mongo store
 - **Flash Notifications**: Connect-flash (v0.1.1)
 - **Method Override**: Support for PUT/DELETE in forms with method-override
@@ -70,13 +70,14 @@ The application uses Mongoose schemas to define the data structure:
 const userSchema = new Schema({
   email: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
   // username & password fields are automatically added by passport-local-mongoose
 });
 ```
 
 The User model leverages passport-local-mongoose for:
+
 - Secure password hashing and salting
 - Username validation
 - Authentication methods
@@ -87,12 +88,12 @@ The User model leverages passport-local-mongoose for:
 const listingSchema = new Schema({
   title: {
     type: String,
-    required: true
+    required: true,
   },
   description: String,
   image: {
     type: String,
-    default: "default-image-url"
+    default: "default-image-url",
   },
   price: Number,
   location: String,
@@ -100,17 +101,18 @@ const listingSchema = new Schema({
   reviews: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Review"
-    }
+      ref: "Review",
+    },
   ],
   owner: {
     type: Schema.Types.ObjectId,
-    ref: "User"
-  }
+    ref: "User",
+  },
 });
 ```
 
 The Listing model includes:
+
 - Required title field
 - Default image handling
 - Relationship with reviews (one-to-many)
@@ -124,20 +126,21 @@ const reviewSchema = new Schema({
   rating: {
     type: Number,
     min: 1,
-    max: 5
+    max: 5,
   },
   createdAt: {
     type: Date,
-    default: Date.now()
+    default: Date.now(),
   },
   author: {
     type: Schema.Types.ObjectId,
-    ref: "User"
-  }
+    ref: "User",
+  },
 });
 ```
 
 The Review model features:
+
 - Rating system (1-5 scale)
 - Timestamp tracking
 - Author reference for user attribution
@@ -146,32 +149,32 @@ The Review model features:
 
 ### Listings
 
-| Method | Endpoint | Description | Authentication |
-|--------|----------|-------------|----------------|
-| GET | /listings | List all accommodations | None |
-| GET | /listings/new | Display new listing form | Required |
-| POST | /listings | Create a new listing | Required |
-| GET | /listings/:id | View a specific listing | None |
-| GET | /listings/:id/edit | Edit listing form | Required + Owner |
-| PUT | /listings/:id | Update a listing | Required + Owner |
-| DELETE | /listings/:id | Delete a listing | Required + Owner |
+| Method | Endpoint           | Description              | Authentication   |
+| ------ | ------------------ | ------------------------ | ---------------- |
+| GET    | /listings          | List all accommodations  | None             |
+| GET    | /listings/new      | Display new listing form | Required         |
+| POST   | /listings          | Create a new listing     | Required         |
+| GET    | /listings/:id      | View a specific listing  | None             |
+| GET    | /listings/:id/edit | Edit listing form        | Required + Owner |
+| PUT    | /listings/:id      | Update a listing         | Required + Owner |
+| DELETE | /listings/:id      | Delete a listing         | Required + Owner |
 
 ### Reviews
 
-| Method | Endpoint | Description | Authentication |
-|--------|----------|-------------|----------------|
-| POST | /listings/:id/reviews | Add a review | Required |
+| Method | Endpoint                        | Description     | Authentication    |
+| ------ | ------------------------------- | --------------- | ----------------- |
+| POST   | /listings/:id/reviews           | Add a review    | Required          |
 | DELETE | /listings/:id/reviews/:reviewId | Delete a review | Required + Author |
 
 ### Authentication
 
-| Method | Endpoint | Description | Authentication |
-|--------|----------|-------------|----------------|
-| GET | /signup | Display registration form | None |
-| POST | /signup | Register a new user | None |
-| GET | /login | Display login form | None |
-| POST | /login | Authenticate user | None |
-| GET | /logout | Log out user | Required |
+| Method | Endpoint | Description               | Authentication |
+| ------ | -------- | ------------------------- | -------------- |
+| GET    | /signup  | Display registration form | None           |
+| POST   | /signup  | Register a new user       | None           |
+| GET    | /login   | Display login form        | None           |
+| POST   | /login   | Authenticate user         | None           |
+| GET    | /logout  | Log out user              | Required       |
 
 ## 7. Security Features
 
@@ -196,21 +199,25 @@ Wanderlust implements several security measures to protect user data and prevent
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/yourusername/wanderlust.git
    cd wanderlust
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
 
 3. Configure MongoDB:
+
    - Ensure MongoDB is running locally
    - Default connection string: `mongodb://127.0.0.1:27017/wanderlust`
 
 4. Start the application:
+
    ```bash
    node app.js
    ```
@@ -221,6 +228,7 @@ Wanderlust implements several security measures to protect user data and prevent
 ### Environment Variables (if applicable)
 
 For production deployment, consider setting these environment variables:
+
 - `PORT`: Server port (default: 8080)
 - `MONGO_URL`: MongoDB connection string
 - `SESSION_SECRET`: Secret for session encryption
@@ -260,4 +268,4 @@ Can use this for reference if needed.
 
 ---
 
-*Last updated: May 2025*
+_Last updated: May 2025_

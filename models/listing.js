@@ -3,49 +3,47 @@ const Schema = mongoose.Schema;
 const Review = require("./review.js");
 
 const listingSchema = new Schema({
-    title: {
-        type: String,
-        required: true,
+  title: {
+    type: String,
+    required: true,
+  },
+  description: String,
+  image: {
+    url: String,
+    filename: String,
+  },
+  price: Number,
+  location: String,
+  country: String,
+  category: String,
+  reviews: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Review",
     },
-    description: String,
-    image: {
-        type: String,
-        default:
-            "https://images.unsplash.com/photo-1716667282954-156026ff671c?q=80&w=2252&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        set: function (v) {
-            if (v === "") {
-                return "https://images.unsplash.com/photo-1716667282954-156026ff671c?q=80&w=2252&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
-            }
-            // If v is an object with a url property, use that
-            if (typeof v === 'object' && v.url) {
-                return v.url;
-            }
-            // Otherwise return v as is
-            return v;
-        }
+  ],
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
+  geometry: {
+    type: {
+      type: String, // Don't do `{ location: { type: String } }`
+      enum: ["Point"], // 'location.type' must be 'Point'
+      required: true,
     },
-    price: Number,
-    location: String,
-    country: String,
-    reviews: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: "Review",
-        },
-    ],
-    owner: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-    }
+    coordinates: {
+      type: [Number],
+      required: true,
+    },
+  },
 });
-
 
 listingSchema.post("findOneAndDelete", async (listing) => {
-    if (listing) {
-        await Review.deleteMany({ _id: { $in: listing.reviews } });
-    }
+  if (listing) {
+    await Review.deleteMany({ _id: { $in: listing.reviews } });
+  }
 });
-
 
 const Listing = mongoose.model("Listing", listingSchema);
 module.exports = Listing;
