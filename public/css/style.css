@@ -145,8 +145,9 @@ body {
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  padding: 0 1rem;
-  margin: 1.5rem 0;
+  padding: 0;
+  margin: 1.5rem auto;
+  padding-left: 26% !important;  /* Match the offset of the image card */
 }
 
 .btns {
@@ -154,6 +155,7 @@ body {
   gap: 1rem;
   margin: 0;
   width: auto;
+  padding-left: 0;
 }
 
 .show-card {
@@ -208,6 +210,7 @@ body {
   .btns-container {
     justify-content: center;
     padding: 0;
+    max-width: 100%;
   }
   
   .btns {
@@ -299,7 +302,7 @@ body {
 
   .btns-container {
     justify-content: center;
-    padding: 0;
+    padding-left: 0% !important;
   }
   
   .btns {
