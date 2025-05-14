@@ -20,3 +20,31 @@
     );
   });
 })();
+
+// Debug code for flash messages
+document.addEventListener("DOMContentLoaded", function () {
+  // Check for flash messages
+  const successFlash = document.querySelector(".alert-success");
+  const errorFlash = document.querySelector(".alert-danger");
+
+  if (successFlash) {
+    console.log(
+      "Success flash message is present:",
+      successFlash.textContent.trim()
+    );
+  }
+  if (errorFlash) {
+    console.log(
+      "Error flash message is present:",
+      errorFlash.textContent.trim()
+    );
+  }
+
+  // Monitor flash message dismissal
+  const flashMessages = document.querySelectorAll(".alert");
+  flashMessages.forEach((flash) => {
+    flash.addEventListener("closed.bs.alert", function () {
+      console.log("Flash message was dismissed:", this.textContent.trim());
+    });
+  });
+});

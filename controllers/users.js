@@ -14,7 +14,7 @@ module.exports.singup = async (req, res) => {
       if (err) {
         return next(err);
       }
-      req.flash("success", "Welcome to Wanderlust");
+      req.flash("success", "Welcome to Aurora Escapes");
       res.redirect("/listings");
     });
   } catch (e) {
@@ -28,8 +28,13 @@ module.exports.renderLoginForm = (req, res) => {
 };
 
 module.exports.login = async (req, res) => {
-  req.flash("success", "Welcome back to Wanderlust!");
-  let redirectUrl = res.locals.redirectUrl || "/listings";
+  // Don't clear existing flash messages - let Passport handle error messages
+  // Only set success message if there isn't an error message
+  if (!req.flash("error").length) {
+    req.flash("success", "Welcome back to Aurora Escapes!");
+  }
+
+  const redirectUrl = res.locals.redirectUrl || "/listings";
   res.redirect(redirectUrl);
 };
 

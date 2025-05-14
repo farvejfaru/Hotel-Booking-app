@@ -143,4 +143,36 @@ body {
   font-weight: bold;
 }
 
+/* Flash message styles to ensure visibility */
+.flash-message-container {
+  position: fixed !important;
+  top: 80px !important; /* Increased from 20px to be below navbar */
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 9999 !important; /* Increased z-index */
+  width: 100% !important;
+  max-width: 800px !important;
+  pointer-events: auto !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
 
+.alert {
+  margin: 1rem !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Add specific styles for success and error alerts */
+.alert-success {
+  background-color: #d4edda !important;
+  border-color: #c3e6cb !important;
+  color: #155724 !important;
+}
+
+.alert-danger {
+  background-color: #f8d7da !important;
+  border-color: #f5c6cb !important;
+  color: #721c24 !important;
+}

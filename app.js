@@ -60,7 +60,6 @@ const sessionOptions = {
   resave: false,
   saveUninitialized: true,
   cookie: {
-    expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
     maxAge: 7 * 24 * 60 * 60 * 1000,
     httpOnly: true,
   },
@@ -84,6 +83,8 @@ app.use((req, res, next) => {
   res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currUser = req.user;
+  console.log('Flash Messages - Success:', res.locals.success);
+  console.log('Flash Messages - Error:', res.locals.error);
   next();
 });
 
@@ -91,6 +92,13 @@ app.use((req, res, next) => {
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
+
+// Test route for flash messages
+app.get("/test-flash", (req, res) => {
+  req.flash("success", "This is a test success message");
+  req.flash("error", "This is a test error message");
+  res.redirect("/listings");
+});
 
 app.all(/./, (req, res, next) => {
   next(new ExpressError(404, "Page Not Found"));
