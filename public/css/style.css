@@ -1,12 +1,37 @@
+/* Update root styles */
+* {
+  box-sizing: border-box !important;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  width: 100%;
+}
+
 body {
   font-family: "Plus Jakarta Sans", sans-serif !important;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
 }
 
-.container {
-  flex: 1;
+.container,
+.container-fluid {
+  width: 100% !important;
+  max-width: 100% !important;
+  padding: 0 15px !important; /* Changed from 0 to 0 15px */
+  margin: 0 auto !important;
+  overflow-x: hidden !important;
+}
+
+.row {
+  max-width: 100% !important;
+  margin: 0 -15px !important; /* Changed from 0 auto to 0 -15px */
+  padding: 0 !important;
 }
 
 .navbar {
@@ -58,19 +83,134 @@ body {
 }
 
 /* Cards */
+/* Index page layout */
 .listing-card {
-  border: none !important;
-  margin-bottom: 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  margin-bottom: 2rem !important;
+  transition: all 0.3s ease !important;
+  border-radius: 1.25rem !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+  background-color: white !important;
+}
+
+.listing-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1) !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
 }
 
 .card-img-top {
-  border-radius: 1rem !important;
+  border-radius: 1.25rem 1.25rem 0 0 !important;
   width: 100% !important;
   object-fit: cover !important;
+  aspect-ratio: 16/9;
 }
 
 .card-body {
-  padding: 0 !important;
+  padding: 1.25rem !important;
+  background-color: white !important;
+  border-radius: 0 0 1.25rem 1.25rem !important;
+}
+
+/* Index page layout fixes */
+.listings-container {
+  padding: 0 15px !important;
+}
+
+.listings-container .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px !important;
+}
+
+.listings-container .col-lg-4 {
+  padding: 0 15px !important;
+}
+
+/* Desktop view */
+@media screen and (min-width: 768px) {
+  .listings-container .col-lg-4 {
+    width: 33.33% !important;
+  }
+}
+
+/* Mobile view */
+@media screen and (max-width: 768px) {
+  /* Index page fixes */
+  .listings-container {
+    padding: 10px !important;
+  }
+
+  .listings-container .row {
+    margin: 0 !important;
+    display: flex;
+    justify-content: center !important;
+  }
+
+  .listings-container .col-lg-4 {
+    width: 92% !important;
+    margin: 0 auto 1.5rem auto !important;
+    padding: 0 !important;
+  }
+
+  /* Show page button fixes */
+  .btns {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    width: 92% !important;
+    margin: 1rem auto !important;
+  }
+
+  .btns .btn,
+  .btns form,
+  .btns form .btn {
+    width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* Review card fixes */
+  .card.col-5,
+  .row .card.col-5 {
+    width: 92% !important;
+    margin: 0.75rem auto !important;
+    padding: 1rem !important;
+  }
+
+  .card-body {
+    text-align: center !important;
+  }
+
+  .card-title {
+    text-align: center !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .starability-result {
+    margin: 1rem auto !important;
+    display: block !important;
+  }
+
+  .card-text {
+    text-align: center !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Review form fixes */
+  .needs-validation {
+    width: 92% !important;
+    margin: 0 auto !important;
+    padding: 1rem !important;
+  }
+
+  /* Show page container fixes */
+  .col-8.offset-3,
+  .col-6.offset-3,
+  .card.col-6.offset-3 {
+    width: 92% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
 }
 
 .card-text p {
@@ -105,23 +245,138 @@ body {
 
 /* Show Page */
 .show-img {
-  height: 30vh;
+  height: max(50vh, 250px);
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 1rem 1rem 1rem 1rem !important;
+  overflow: hidden;
+  display: block;
+  margin-top: 1rem;
+  position: relative;
 }
 
 .btns {
   display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
 }
 
 .show-card {
-  padding-left: 0%;
-  padding-right: 0%;
+  padding: 0;
+  margin: 0 auto;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Map */
-
 #map {
   height: 400px;
   width: 80vh;
+  max-width: 100%;
+  border: 3px solid #dee2e6;
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1200px) {
+  .col-8.offset-3,
+  .col-6.offset-3,
+  .card.col-6.offset-3 {
+    width: 70% !important;
+    margin-left: 15% !important;
+  }
+
+  .show-card {
+    border-radius: 1.25rem !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .show-img {
+    border-radius: 1.25rem 1.25rem 0 0 !important;
+    height: max(25vh, 280px) !important;
+    object-position: center !important;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  /* Update/add these rules */
+  /* Image and card adjustments */
+  .show-img {
+    height: 20vh !important;
+  }
+
+  .show-card {
+    width: 92% !important;
+    margin: 0 4% !important;
+    padding: 0 !important;
+  }
+
+  .card-body {
+    padding: 0.5rem !important;
+  }
+
+  /* Button adjustments */
+  .btns {
+    flex-direction: column;
+    align-items: stretch;
+    width: 92% !important;
+    margin: 1rem 4% !important;
+    padding: 0 !important;
+  }
+
+  .btns .btn,
+  .btns form,
+  .btns form .btn {
+    width: 100%;
+  }
+
+  /* Map size */
+  #map {
+    height: 300px;
+  }
+
+  /* Review form and cards */
+  .needs-validation {
+    padding: 0.5rem !important;
+    width: 100% !important;
+  }
+
+  /* Review section and map container adjustments */
+  .col-8.offset-3.mb-3,
+  .col-6.offset-3.mb-3 {
+    width: 90% !important;
+    margin: 0 5% !important;
+    padding: 0 !important;
+  }
+
+  .card-text {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .starability-slot {
+    font-size: 0.9rem;
+    padding: 0.5rem 0;
+  }
+
+  .card-title {
+    margin-bottom: 1.5rem !important;
+  }
+
+  .starability-result {
+    margin: 1.5rem auto !important;
+    display: block !important;
+    float: none !important;
+  }
 }
 
 .blend-bg {
@@ -175,4 +430,14 @@ body {
   background-color: #f8d7da !important;
   border-color: #f5c6cb !important;
   color: #721c24 !important;
+}
+
+.fa-circle-user {
+  font-size: 1.1rem;
+}
+
+.card-title {
+  font-size: 1rem;
+  margin-top: 1rem;
+  font-weight: bolder;
 }
